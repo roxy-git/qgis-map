@@ -1,2 +1,0 @@
-# qgis-map
-map praxisprojekt
