@@ -7,7 +7,7 @@
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css">
-    
+        <link rel="stylesheet" href="css/L.Control.Layers.Tree.css">
         <link rel="stylesheet" href="css/qgis2web.css">
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/MarkerCluster.css">
@@ -20,14 +20,120 @@
             margin: 0;
         }
         </style>
+         <style>
+            #filter {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background: white;
+                padding: 10px;
+                border-radius: 5px;
+                z-index: 1000;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            }
+            #filter h3, #filter h4 {
+                margin: 5px 0;
+            }
+        </style>
+
         <title></title>
     </head>
     <body>
+
+        <div id="filter">
+            <h3>Filter:</h3>
+            <h4>Nach Jahr:</h4>
+                 
+            <label><input type="checkbox" value="1928" onclick="filterByYear(this.value)"> 1928</label>
+            <label><input type="checkbox" value="1946" onclick="filterByYear(this.value)"> 1946</label>
+            <label><input type="checkbox" value="1948" onclick="filterByYear(this.value)"> 1948</label>
+            <label><input type="checkbox" value="1949" onclick="filterByYear(this.value)"> 1949</label>
+            <label><input type="checkbox" value="1950" onclick="filterByYear(this.value)"> 1950</label>
+            <label><input type="checkbox" value="1951" onclick="filterByYear(this.value)"> 1951</label>
+            <label><input type="checkbox" value="1952" onclick="filterByYear(this.value)"> 1952</label>
+            <label><input type="checkbox" value="1953" onclick="filterByYear(this.value)"> 1953</label>
+            <label><input type="checkbox" value="1954" onclick="filterByYear(this.value)"> 1954</label>
+            <label><input type="checkbox" value="1955" onclick="filterByYear(this.value)"> 1955</label>
+            <label><input type="checkbox" value="1956" onclick="filterByYear(this.value)"> 1956</label>
+            <label><input type="checkbox" value="1957" onclick="filterByYear(this.value)"> 1957</label>
+            <label><input type="checkbox" value="1958" onclick="filterByYear(this.value)"> 1958</label>
+            <label><input type="checkbox" value="1959" onclick="filterByYear(this.value)"> 1959</label>
+            <label><input type="checkbox" value="1960" onclick="filterByYear(this.value)"> 1960</label>
+            <label><input type="checkbox" value="1961" onclick="filterByYear(this.value)"> 1961</label>
+            <label><input type="checkbox" value="1962" onclick="filterByYear(this.value)"> 1962</label>
+            <label><input type="checkbox" value="1963" onclick="filterByYear(this.value)"> 1963</label>
+            <label><input type="checkbox" value="1964" onclick="filterByYear(this.value)"> 1964</label>
+            <label><input type="checkbox" value="1965" onclick="filterByYear(this.value)"> 1965</label>
+            <label><input type="checkbox" value="1966" onclick="filterByYear(this.value)"> 1966</label>
+            <label><input type="checkbox" value="1967" onclick="filterByYear(this.value)"> 1967</label>
+            <label><input type="checkbox" value="1968" onclick="filterByYear(this.value)"> 1968</label>
+            <label><input type="checkbox" value="1969" onclick="filterByYear(this.value)"> 1969</label>
+            <label><input type="checkbox" value="1970" onclick="filterByYear(this.value)"> 1970</label>
+            <label><input type="checkbox" value="1971" onclick="filterByYear(this.value)"> 1971</label>
+            <label><input type="checkbox" value="1972" onclick="filterByYear(this.value)"> 1972</label>
+            <label><input type="checkbox" value="1973" onclick="filterByYear(this.value)"> 1973</label>
+            <label><input type="checkbox" value="1974" onclick="filterByYear(this.value)"> 1974</label>
+            <label><input type="checkbox" value="1975" onclick="filterByYear(this.value)"> 1975</label>
+            <label><input type="checkbox" value="1976" onclick="filterByYear(this.value)"> 1976</label>
+            <label><input type="checkbox" value="1977" onclick="filterByYear(this.value)"> 1977</label>
+            <label><input type="checkbox" value="1978" onclick="filterByYear(this.value)"> 1978</label>
+            <label><input type="checkbox" value="1979" onclick="filterByYear(this.value)"> 1979</label>
+            <label><input type="checkbox" value="1980" onclick="filterByYear(this.value)"> 1980</label>
+            <label><input type="checkbox" value="1981" onclick="filterByYear(this.value)"> 1981</label>
+            <label><input type="checkbox" value="1982" onclick="filterByYear(this.value)"> 1982</label>
+            <label><input type="checkbox" value="1983" onclick="filterByYear(this.value)"> 1983</label>
+            <label><input type="checkbox" value="1984" onclick="filterByYear(this.value)"> 1984</label>
+            <label><input type="checkbox" value="1985" onclick="filterByYear(this.value)"> 1985</label>
+            <label><input type="checkbox" value="1986" onclick="filterByYear(this.value)"> 1986</label>
+            <label><input type="checkbox" value="1987" onclick="filterByYear(this.value)"> 1987</label>
+            <label><input type="checkbox" value="1988" onclick="filterByYear(this.value)"> 1988</label>
+            <label><input type="checkbox" value="1989" onclick="filterByYear(this.value)"> 1989</label>
+            <label><input type="checkbox" value="1990" onclick="filterByYear(this.value)"> 1990</label>
+            <label><input type="checkbox" value="1991" onclick="filterByYear(this.value)"> 1991</label>
+            <label><input type="checkbox" value="1992" onclick="filterByYear(this.value)"> 1992</label>
+            <label><input type="checkbox" value="1993" onclick="filterByYear(this.value)"> 1993</label>
+            <label><input type="checkbox" value="1994" onclick="filterByYear(this.value)"> 1994</label>
+            <label><input type="checkbox" value="1995" onclick="filterByYear(this.value)"> 1995</label>
+            <label><input type="checkbox" value="1996" onclick="filterByYear(this.value)"> 1996</label>
+            <label><input type="checkbox" value="1997" onclick="filterByYear(this.value)"> 1997</label>
+            <label><input type="checkbox" value="1998" onclick="filterByYear(this.value)"> 1998</label>
+            <label><input type="checkbox" value="1999" onclick="filterByYear(this.value)"> 1999</label>
+            <label><input type="checkbox" value="2000" onclick="filterByYear(this.value)"> 2000</label>
+            <label><input type="checkbox" value="2001" onclick="filterByYear(this.value)"> 2001</label>
+            <label><input type="checkbox" value="2002" onclick="filterByYear(this.value)"> 2002</label>
+            <label><input type="checkbox" value="2003" onclick="filterByYear(this.value)"> 2003</label>
+            <label><input type="checkbox" value="2004" onclick="filterByYear(this.value)"> 2004</label>
+            <label><input type="checkbox" value="2005" onclick="filterByYear(this.value)"> 2005</label>
+            <label><input type="checkbox" value="2006" onclick="filterByYear(this.value)"> 2006</label>
+            <label><input type="checkbox" value="2007" onclick="filterByYear(this.value)"> 2007</label>
+            <label><input type="checkbox" value="2008" onclick="filterByYear(this.value)"> 2008</label>
+            <label><input type="checkbox" value="2009" onclick="filterByYear(this.value)"> 2009</label>
+            <label><input type="checkbox" value="2010" onclick="filterByYear(this.value)"> 2010</label>
+            <label><input type="checkbox" value="2011" onclick="filterByYear(this.value)"> 2011</label>
+            <label><input type="checkbox" value="2012" onclick="filterByYear(this.value)"> 2012</label>
+            <label><input type="checkbox" value="2013" onclick="filterByYear(this.value)"> 2013</label>
+            <label><input type="checkbox" value="2014" onclick="filterByYear(this.value)"> 2014</label>
+            <label><input type="checkbox" value="2015" onclick="filterByYear(this.value)"> 2015</label>
+            <label><input type="checkbox" value="2016" onclick="filterByYear(this.value)"> 2016</label>
+            <label><input type="checkbox" value="2017" onclick="filterByYear(this.value)"> 2017</label>
+            <label><input type="checkbox" value="2018" onclick="filterByYear(this.value)"> 2018</label>
+            <label><input type="checkbox" value="2019" onclick="filterByYear(this.value)"> 2019</label>
+            <label><input type="checkbox" value="2020" onclick="filterByYear(this.value)"> 2020</label>
+            <label><input type="checkbox" value="2021" onclick="filterByYear(this.value)"> 2021</label>
+            <label><input type="checkbox" value="2022" onclick="filterByYear(this.value)"> 2022</label>
+            <label><input type="checkbox" value="2023" onclick="filterByYear(this.value)"> 2023</label>
+            <label><input type="checkbox" value="2024" onclick="filterByYear(this.value)"> 2024</label>
+            <label><input type="checkbox" value="2025" onclick="filterByYear(this.value)"> 2025</label>
+            <label><input type="checkbox" value="2026" onclick="filterByYear(this.value)"> 2026</label>
+            <label><input type="checkbox" value="2027" onclick="filterByYear(this.value)"> 2027</label>
+            
+        </div>
+
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script>
-        
+        <script src="js/L.Control.Layers.Tree.min.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
         <script src="js/leaflet.pattern.js"></script>
         <script src="js/leaflet-hash.js"></script>
@@ -40,7 +146,7 @@
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[28.28348221435933,-34.61475528594634],[62.17466737409302,81.28354623214821]]);
+        }).fitBounds([[26.640313221004483,-25.75615812903912],[61.29778520875601,43.382791420889184]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -137,10 +243,55 @@
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(183,72,75,1.0)',
+                fillColor: 'rgba(231,113,72,1.0)',
                 interactive: true,
             }
         }
+         // Arrays für Filteroptionen (z. B. ausgewählte Jahre oder Theaterstücke)
+        let selectedYears = [];
+
+        function filterByYear(year) {
+            year = year.toString(); // Konvertiere die Jahreszahl in einen String
+            if (selectedYears.includes(year)) {
+                selectedYears = selectedYears.filter(y => y !== year); // Entferne das Jahr
+            } else {
+                selectedYears.push(year); // Füge das Jahr hinzu
+            }
+            updateLayer();
+        }
+
+        function updateLayer() {
+            console.log("UpdateLayer aufgerufen"); // Debug-Ausgabe
+            console.log("Ausgewählte Jahre:", selectedYears); // Debug-Ausgabe
+            
+            // Entferne alle Marker aus dem Cluster-Wrapper
+            cluster_auffuehrung_theater_coordinates_1.clearLayers();
+
+            // Filtere die Features
+            const filteredFeatures = json_auffuehrung_theater_coordinates_1.features.filter(feature => {
+                const Year = feature.properties.Year.toString(); // Konvertiere den Wert in einen String
+                return selectedYears.length === 0 || selectedYears.includes(Year); // Vergleiche das Jahr
+            });
+
+            console.log("Gefilterte Features:", filteredFeatures.length); // Debug-Ausgabe
+
+            // Erstelle einen neuen Layer mit den gefilterten Features
+            const filteredLayer = new L.geoJson({
+                type: "FeatureCollection",
+                features: filteredFeatures
+            }, {
+                onEachFeature: pop_auffuehrung_theater_coordinates_1,
+                pointToLayer: function (feature, latlng) {
+                    return L.circleMarker(latlng, style_auffuehrung_theater_coordinates_1_0(feature));
+                }
+            });
+
+            // Füge den neuen Layer zum Cluster hinzu
+            cluster_auffuehrung_theater_coordinates_1.addLayer(filteredLayer);
+
+            console.log("Cluster wurde aktualisiert."); // Debug-Ausgabe
+        }
+
         map.createPane('pane_auffuehrung_theater_coordinates_1');
         map.getPane('pane_auffuehrung_theater_coordinates_1').style.zIndex = 401;
         map.getPane('pane_auffuehrung_theater_coordinates_1').style['mix-blend-mode'] = 'normal';
